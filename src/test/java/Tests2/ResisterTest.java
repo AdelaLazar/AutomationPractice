@@ -1,11 +1,11 @@
 package Tests2;
 
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
 
 public class ResisterTest {
 
@@ -21,10 +21,7 @@ public class ResisterTest {
         driver.get("http://demo.automationtesting.in/Register.html");
 
 
-
-
         driver.manage().window().maximize();
-
 
 
         WebElement signiniElement= driver.findElement(By.id("section"));
@@ -51,7 +48,6 @@ public class ResisterTest {
         Select skill = new Select(skills);
         skill.selectByValue ("Java");
 
-
         WebElement Countryelement= driver.findElement(By.cssSelector("input[type='text'"));
         String Countryvalue="Romania";
         Countryelement.sendKeys(Countryvalue);
@@ -66,11 +62,38 @@ public class ResisterTest {
         Select day= new Select(days);
         day.selectByValue("6");
 
+
+        WebElement languageElement= driver.findElement(By.id("msdd"));
+        languageElement.click();
+        List<WebElement> LanguageOptions= driver.findElements(By.cssSelector("ul.ui-autocomplete.ui-front>li>a"));
+        for (int index = 0;index < LanguageOptions.size();index ++){
+            if(LanguageOptions.get(index).getText().equals("English") || (LanguageOptions.get(index).getText().equals("Arabic"))){
+                LanguageOptions.get(index).click();
+            }
+        }
+
+        phoneelement.click();
+
+        WebElement CountryElement= driver.findElement(By.cssSelector("span[role='combobox']"));
+        CountryElement.click();
+        WebElement CountryInputElement= driver.findElement(By.className("select2-search__field"));
+        CountryInputElement.sendKeys("Australia");
+        CountryInputElement.sendKeys(Keys.ENTER);
+
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,300)", "");
+
+
         driver.findElement(By.id("firstpassword")).sendKeys("Adelutza188@");
 
         driver.findElement(By.id("secondpassword")).sendKeys("Adelutza188@");
 
-        driver.close();
+
+        WebElement uploadFileElement= driver.findElement(By.id("imagesrc"));
+        uploadFileElement.sendKeys("C:\\Users\\HP\\Desktop\\Sa50\\Eu\\20200310_012147.jpg");
+
+
 
 
 
