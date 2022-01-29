@@ -1,5 +1,6 @@
 package Tests2;
 
+import Base.ShareData;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -7,21 +8,13 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-public class ResisterTest {
+public class ResisterTest extends ShareData {
 
-    public WebDriver driver;
+
 
     @Test
-
     public void register(){
-        System.setProperty("webdriver.chrome.driver","C:\\Automation\\chromedriver.exe");
 
-        driver=new ChromeDriver();
-
-        driver.get("http://demo.automationtesting.in/Register.html");
-
-
-        driver.manage().window().maximize();
 
 
         WebElement signiniElement= driver.findElement(By.id("section"));
