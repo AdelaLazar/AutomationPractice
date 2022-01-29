@@ -50,11 +50,6 @@ public class windowtest extends ShareData {
 
 
         driver.close();
-        driver.switchTo().window( multipleTabs.get(1));
-        System.out.println("Titlul paginii:"+driver.getTitle());
-
-
-        driver.close();
         driver.switchTo().window(tabs.get(0));
         System.out.println("Titlul paginii"+ driver.getTitle());
 
